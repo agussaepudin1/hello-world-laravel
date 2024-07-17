@@ -1,0 +1,10 @@
+services:
+  laravel_docker:
+    image: agussaepudin/hello-world-laravel:sqlite
+    container_name: hello-world-laravel
+    build: .
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - 9090:80
+

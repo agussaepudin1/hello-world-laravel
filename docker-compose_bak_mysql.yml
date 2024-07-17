@@ -1,0 +1,27 @@
+services:
+  laravel_docker:
+    image: agussaepudin/hello-world-laravel:latest
+    container_name: hello-world-laravel
+    build: .
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - 9090:80
+
+  mysql_db:
+    image: mysql:8.0.38
+    environment:
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laravel_docker
+      MYSQL_HOST: 127.0.0.1
+    ports:
+      - 3306:3306
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    ports:
+      - 9001:80
+    environment:
+      - PMA_ARBITRARY=1
